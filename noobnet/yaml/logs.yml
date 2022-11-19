@@ -1,0 +1,14 @@
+logs:
+  - name: root
+    level: info
+    formater: "%d%T%m%n"
+    appender:
+      -type: StdoutLogAppender
+  - name: system
+    level: debug
+    formater: "%d%T%m%n"
+    appender:
+      -type: StdoutLogAppender
+system:
+  - port: 9090
+    address: 172:162:56:136 

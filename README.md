@@ -1,4 +1,5 @@
 # Hello world
+练手项目，教程来自b站sylar高性能网络库
 
-如果这个模板有用，请点一个🌟吧！
+工程模板来自
 [Github Repo](https://github.com/Codesire-Deng/TemplateRepoCxx)

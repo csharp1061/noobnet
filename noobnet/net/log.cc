@@ -2,6 +2,7 @@
 
 #include <map>
 #include <functional>
+#include <stdarg.h>
 
 
 namespace noobnet {
@@ -26,14 +27,31 @@ const char* LogLevel::ToString(LogLevel::level level) {
     return "UNKOWN";
 }
 
-LogEvent::LogEvent(const char* file, int32_t line, uint32_t elapse, 
-                   uint32_t thread, uint32_t fiber, uint64_t time) :
-                   m_file(file),
-                   m_line(line),
-                   m_elapse(elapse),
-                   m_threadID(thread),
-                   m_fiberID(fiber),
-                   m_time(time) {}
+LogEventWrap::LogEventWrap(LogEvent::ptr val) : m_event(val) {}
+
+LogEventWrap::~LogEventWrap() {
+    m_event->getLogger()->log(m_event->getLevel(), m_event);
+}
+
+void LogEvent::format(const char* fmt, ...) {
+    va_list al;
+    va_start(al, fmt);
+    format(fmt, al);
+    va_end(al);
+}
+
+void LogEvent::format(const char* fmt, va_list al) {
+    char* buf = nullptr;
+    int len = vasprintf(&buf, fmt, al);
+    if (len != -1) {
+        m_ss << std::string(buf, len);
+        free(buf);
+    }
+}
+
+std::stringstream& LogEventWrap::getSS() {
+    return m_event->getSS();
+}
 
 class MessegeFormatItem : public LogFormater::FormaterItem {
  public:
@@ -85,10 +103,17 @@ class FiberIdFormatItem : public LogFormater::FormaterItem {
 
 class DateTimeFormatItem : public LogFormater::FormaterItem {
  public:
-    DateTimeFormatItem(const std::string& format = "%Y:%M:%D %H:%M:%S") : m_format(format) {
-
+    DateTimeFormatItem(const std::string& format = "%Y-%M-%D %H:%M:%S") : m_format(format) {
+        if (m_format.empty()) {
+            m_format = "%Y-%M-%D %H:%M:%S";
+        }
     }
     void format(std::shared_ptr<Logger> logger, std::ostream& os, LogLevel::level level, LogEvent::ptr event) override {
+        struct tm tm;
+        time_t time = event->getTime();
+        localtime_r(&time, &tm);
+        char buf[64];
+        strftime(buf, sizeof(buf), m_format.c_str(), &tm);
         os << event->getTime();
     }
  private:
@@ -119,6 +144,14 @@ class FileNameFormatItem : public LogFormater::FormaterItem {
     }
 };
 
+class TabFormatItem : public LogFormater::FormaterItem {
+ public:
+    TabFormatItem(const std::string& str = "") {}
+    void format(std::shared_ptr<Logger> logger, std::ostream& os, LogLevel::level level, LogEvent::ptr event) override {
+        os << "\t";
+    }
+};
+
 class StirngFormatItem : public LogFormater::FormaterItem {
  public:
     StirngFormatItem(const std::string& fmt) : m_string(fmt) {}
@@ -128,6 +161,20 @@ class StirngFormatItem : public LogFormater::FormaterItem {
  private:
     std::string m_string;
 };
+
+LogEvent::LogEvent(const char* file, int32_t line, uint32_t elapse, 
+            uint32_t thread, uint32_t fiber, uint64_t time,
+            std::shared_ptr<Logger> logger, LogLevel::level level) 
+            :m_file(file),
+             m_line(line),
+             m_elapse(elapse),
+             m_threadID(thread),
+             m_fiberID(fiber),
+             m_time(time),
+             m_logger(logger),
+             m_level(level) {
+
+}
 
 Logger::Logger(const std::string name) : m_name(name) , m_level(LogLevel::DEBUG) {
     m_formater.reset(new LogFormater("%d [%p] %f %l %m %n"));
@@ -270,7 +317,7 @@ void LogFormater::init() {
             }
             str = m_pattern.substr(i + 1, n - i - 1);
             vec.push_back(std::make_tuple(str, fmt, 1));
-            i = n;
+            i = n - 1;
         } else if (fmt_status == 1) {
             //此时说明解析出错，并不是完整的一组 XXX{XXX}
             std::cout << "pattern parser error" << m_pattern << "-" << m_pattern.substr(i) << std::endl;
@@ -281,7 +328,7 @@ void LogFormater::init() {
                 nstr.clear();
             }
             vec.push_back(std::make_tuple(str, fmt, 1));
-            i = n;
+            i = n - 1;
         }
     }
 
@@ -301,7 +348,10 @@ void LogFormater::init() {
         XX(n, NextLineFormatItem),
         XX(d, DateTimeFormatItem),
         XX(f, FileNameFormatItem),
-        XX(l, LineFormatItem)
+        XX(l, LineFormatItem),
+        XX(T, TabFormatItem),
+        //tab
+        //...
 #undef XX
     };
 
@@ -309,15 +359,41 @@ void LogFormater::init() {
         if (std::get<2>(i) == 0) {
             m_items.push_back(FormaterItem::ptr(new StirngFormatItem(std::get<0>(i))));
         } else {
-            auto it = s_format_items.find(std::get<1>(i));
+            auto it = s_format_items.find(std::get<0>(i));
             if (it == s_format_items.end()) {
                 m_items.push_back(FormaterItem::ptr(new StirngFormatItem("<<error_format %" + std::get<0>(i) + ">>"))); 
             } else {
                 m_items.push_back(it->second(std::get<1>(i)));
             }
         }
-        std::cout << std::get<0>(i) << "-" << std::get<1>(i) << "-" << std::get<2>(i) << std::endl;
+        //std::cout << std::get<0>(i) << "-" << std::get<1>(i) << "-" << std::get<2>(i) << std::endl;
     }
 }
 
+LoggerManager::LoggerManager() {
+    m_root.reset(new Logger);
+
+    m_root->addAppender(noobnet::StdoutLogAppender::ptr(new StdoutLogAppender));
+
+    m_loggers[m_root->m_name] = m_root;
+
+    init();
+}
+
+Logger::ptr LoggerManager::getLogger(const std::string& name) {
+    auto i = m_loggers.find(name);
+
+    if (i != m_loggers.end()) {
+        return i->second;
+    }
+
+    Logger::ptr logger(new Logger(name));
+    logger->m_root = m_root;
+    m_loggers[name] = logger;
+    return logger;
+}
+
+void LoggerManager::init() {
+
+}
 } // namespace noobnet
