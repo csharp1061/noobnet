@@ -177,7 +177,7 @@ LogEvent::LogEvent(const char* file, int32_t line, uint32_t elapse,
 }
 
 Logger::Logger(const std::string name) : m_name(name) , m_level(LogLevel::DEBUG) {
-    m_formater.reset(new LogFormater("%d [%p] %f %l %m %n"));
+    m_formater.reset(new LogFormater("%d%T[%p]%T%c%T%m%T%n"));
 }
 
 void Logger::log(LogLevel::level level, LogEvent::ptr event) {

@@ -13,6 +13,7 @@
 #include <boost/lexical_cast.hpp>
 #include <yaml-cpp/yaml.h>
 
+//TODO 配置的事件机制，当配置项发生修改时，要通知响应的代码
 
 namespace noobnet
 {
@@ -32,6 +33,7 @@ public:
 
   virtual std::string toString() = 0;
   virtual bool fromString(const std::string& val) = 0;
+  //virtual std::string getTypename() const = 0;
 
   const std::string& getName() const { return m_name; }
   const std::string& getDes() const { return m_description; }
@@ -242,11 +244,14 @@ public:
     return vec;
   }
 };
+
+//TODO 增加用户自定义类型的解析与转换
 template<class T>
 class ConfigVar : public ConfigVarBase {
 public:
   //使用智能指针管理自己
   typedef std::shared_ptr<ConfigVar> ptr;
+  typedef std::function<void (const T& old_conf,const T& new_conf)> on_change_cb; 
 
   ConfigVar(const T& val, const std::string& name, const std::string& des = "")
       :ConfigVarBase(name, des)
@@ -278,20 +283,53 @@ public:
   } 
 
   const T getValue() { return m_val; }
-  void setValue(const T& val) { m_val = val; } 
+  void setValue(const T& val) { 
+    if(m_val == val) {
+      return;
+    }
+    for(auto &i : m_cbs) {
+      i.second(val, m_val);
+    }
+    m_val = val; 
+  } 
+  //TODO 返回类型
+  
+  //m_cbs
+  uint64_t addListener(on_change_cb cb) {
+    static uint64_t s_func_id = 0;
+    ++s_func_id;
+    m_cbs[s_func_id] = cb;
+    return s_func_id;
+  }
+
+  on_change_cb getListener(uint64_t key) {
+    auto it = m_cbs.find(key);
+    return it == m_cbs.end() ? nullptr : it->second;
+  }
+
+  void delListener(uint64_t key) {
+    m_cbs.erase(key);
+  }
+
+  void clearListener() {
+    m_cbs.clear();
+  }
 private:
   T m_val;
+  //为了保证每个回调函数唯一，使用uint64_t几种进行管理
+  std::map<uint64_t, on_change_cb> m_cbs;
 };
 
 //config var 的管理类
 class Config {
 public:
   typedef std::map<std::string, ConfigVarBase::ptr> ConfigVarMap;
-
+  
   //根据三元素查找并返回一个对应的configvar ptr 如果map中没有就会自动创建一个
   template<class T>
   static typename ConfigVar<T>::ptr lookUp(const T& default_val, const std::string& name
     , const std::string& des="") {
+      //TODO 增加同名key不同类型检查
       auto tmp = lookUp<T>(name);
       if (tmp) {
         SYS_LOG_INFO(SYS_LOG_ROOT()) << "Lookup name=" << name << "exists";
