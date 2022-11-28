@@ -13,7 +13,7 @@
 #include <boost/lexical_cast.hpp>
 #include <yaml-cpp/yaml.h>
 
-//TODO 配置的事件机制，当配置项发生修改时，要通知响应的代码
+//TODO 配置的事件机制，当配置项发生修改时，要通知响应的代码，函数回调
 
 namespace noobnet
 {

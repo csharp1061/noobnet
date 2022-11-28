@@ -52,6 +52,8 @@ namespace noobnet {
 #define SYS_LOG_FMT_FATAL(logger, fmt, ...) SYS_LOG_FMT_LEVEL(logger, noobnet::LogLevel::FATAL, fmt, __VA_ARGS__)
 
 #define SYS_LOG_ROOT() noobnet::LoggerMgr::getInstance()->getRoot()
+#define SYS_LOG_NAME(name) noobnet::LoggerMgr::getInstance()->getLogger(name)
+
 //前向声明
 class LoggerManager;
 class Logger;
@@ -118,26 +120,29 @@ private:
 };
 
 //定义输出的格式
-class LogFormater {
+class LogFormatter {
  public:
-  typedef std::shared_ptr<LogFormater> ptr;
-  LogFormater(const std::string& pattern);
+  typedef std::shared_ptr<LogFormatter> ptr;
+  LogFormatter(const std::string& pattern);
 
     //处理为时-分-秒-线程ID-协程ID类似
   std::string format(std::shared_ptr<Logger> logger, LogLevel::level level, LogEvent::ptr event);
 
     //不同类日志格式的总控制类，之后的其他所有格式都继承自该类
-  class FormaterItem {
+  class FormatterItem {
    public:
-    typedef std::shared_ptr<FormaterItem> ptr;
-    virtual ~FormaterItem() {};
+    typedef std::shared_ptr<FormatterItem> ptr;
+    virtual ~FormatterItem() {};
     virtual void format(std::shared_ptr<Logger> logger, std::ostream& os, LogLevel::level level, LogEvent::ptr event) = 0;
   };
+
+  bool is_Error() { return m_error; }
 
   void init();
  private:
   std::string m_pattern;
-  std::vector<FormaterItem::ptr> m_items;
+  std::vector<FormatterItem::ptr> m_items;
+  bool m_error = false;
 };
 
 //日志输出地
@@ -149,14 +154,15 @@ class LogAppender {
 
   virtual void log(std::shared_ptr<Logger> logger, LogLevel::level level, LogEvent::ptr event) = 0; 
 
-  void setFormater(LogFormater::ptr val) { m_formater = val; }
-  LogFormater::ptr getFormater() const { return m_formater; }
+  void setFormater(LogFormatter::ptr val);
+  LogFormatter::ptr getFormater() const { return m_formater; }
 
-  void setFormater(LogLevel::level val) { m_level = val; }
+  void setLevel(LogLevel::level val) { m_level = val; }
   LogLevel::level getLevel() const { return m_level; }
  protected:
   LogLevel::level m_level;
-  LogFormater::ptr m_formater;
+  LogFormatter::ptr m_formater;
+  bool m_hasformatter = false; //是否有日志格式器
 };
 
 //日志类
@@ -176,17 +182,21 @@ friend class LoggerManager;
 
   void addAppender(LogAppender::ptr appender);
   void delAppender(LogAppender::ptr appender);
+  void clearAppenders() { m_appenders.clear(); }
 
   LogLevel::level getLevel() { return m_level; }
   void setLevel(LogLevel::level val) { m_level = val; }
-  const std::string& getName() const { return m_name; };
+  const std::string& getName() const { return m_name; }
+
+  void setFormatter(const std::string& formatter);
+  void setFormatter(const LogFormatter::ptr formatter);
 
  private:
   Logger::ptr m_root;
   std::string m_name;
   LogLevel::level m_level;
   std::list<LogAppender::ptr> m_appenders;  //用链表维护appenders
-  LogFormater::ptr m_formater;  //logger也需要一个formater  可能appender直接输出日志
+  LogFormatter::ptr m_formater;  //logger也需要一个formater  可能appender直接输出日志
 };
 
 //终端日志类
