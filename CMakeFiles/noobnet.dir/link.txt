@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -shared -Wl,-soname,libnoobnet.so -o lib/libnoobnet.so CMakeFiles/noobnet.dir/net/log.cc.o CMakeFiles/noobnet.dir/net/config.cc.o 

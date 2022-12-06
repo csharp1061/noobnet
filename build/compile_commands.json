@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
+  "command": "/usr/bin/g++ -Dnoobnet_EXPORTS -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -fPIC -o CMakeFiles/noobnet.dir/net/log.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc",
+  "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc"
+},
+{
+  "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
+  "command": "/usr/bin/g++ -Dnoobnet_EXPORTS -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -fPIC -o CMakeFiles/noobnet.dir/net/config.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc",
+  "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc"
+},
+{
+  "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
+  "command": "/usr/bin/g++ -Dnoobnet_EXPORTS -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -fPIC -o CMakeFiles/noobnet.dir/net/thread.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc",
+  "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc"
+},
+{
+  "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
+  "command": "/usr/bin/g++  -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -o CMakeFiles/test.dir/tests/test.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc",
+  "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc"
+},
+{
+  "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
+  "command": "/usr/bin/g++  -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -o CMakeFiles/test_config.dir/tests/test_config.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test_config.cc",
+  "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/tests/test_config.cc"
+}
+]

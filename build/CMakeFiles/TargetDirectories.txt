@@ -1,0 +1,5 @@
+/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles/noobnet.dir
+/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles/test.dir
+/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles/test_config.dir
+/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles/edit_cache.dir
+/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles/rebuild_cache.dir

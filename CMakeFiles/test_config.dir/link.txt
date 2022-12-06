@@ -1,0 +1,1 @@
+/usr/bin/c++  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function CMakeFiles/test_config.dir/tests/test_config.cc.o -o bin/test_config  -Wl,-rpath,/home/hzycpp/Desktop/MyTemplate/noobnet/lib lib/libnoobnet.so /usr/local/lib/libyaml-cpp.a 
