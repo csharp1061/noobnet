@@ -158,6 +158,19 @@ test_config/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/build
 .PHONY : test_config/fast
 
+#=============================================================================
+# Target rules for targets named test_thread
+
+# Build rule for target.
+test_thread: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_thread
+.PHONY : test_thread
+
+# fast build rule for target.
+test_thread/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/build
+.PHONY : test_thread/fast
+
 net/config.o: net/config.cc.o
 .PHONY : net/config.o
 
@@ -206,6 +219,30 @@ net/log.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/noobnet.dir/build.make CMakeFiles/noobnet.dir/net/log.cc.s
 .PHONY : net/log.cc.s
 
+net/mutex.o: net/mutex.cc.o
+.PHONY : net/mutex.o
+
+# target to build an object file
+net/mutex.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/noobnet.dir/build.make CMakeFiles/noobnet.dir/net/mutex.cc.o
+.PHONY : net/mutex.cc.o
+
+net/mutex.i: net/mutex.cc.i
+.PHONY : net/mutex.i
+
+# target to preprocess a source file
+net/mutex.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/noobnet.dir/build.make CMakeFiles/noobnet.dir/net/mutex.cc.i
+.PHONY : net/mutex.cc.i
+
+net/mutex.s: net/mutex.cc.s
+.PHONY : net/mutex.s
+
+# target to generate assembly for a file
+net/mutex.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/noobnet.dir/build.make CMakeFiles/noobnet.dir/net/mutex.cc.s
+.PHONY : net/mutex.cc.s
+
 net/thread.o: net/thread.cc.o
 .PHONY : net/thread.o
 
@@ -229,6 +266,30 @@ net/thread.s: net/thread.cc.s
 net/thread.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/noobnet.dir/build.make CMakeFiles/noobnet.dir/net/thread.cc.s
 .PHONY : net/thread.cc.s
+
+net/utils.o: net/utils.cc.o
+.PHONY : net/utils.o
+
+# target to build an object file
+net/utils.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/noobnet.dir/build.make CMakeFiles/noobnet.dir/net/utils.cc.o
+.PHONY : net/utils.cc.o
+
+net/utils.i: net/utils.cc.i
+.PHONY : net/utils.i
+
+# target to preprocess a source file
+net/utils.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/noobnet.dir/build.make CMakeFiles/noobnet.dir/net/utils.cc.i
+.PHONY : net/utils.cc.i
+
+net/utils.s: net/utils.cc.s
+.PHONY : net/utils.s
+
+# target to generate assembly for a file
+net/utils.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/noobnet.dir/build.make CMakeFiles/noobnet.dir/net/utils.cc.s
+.PHONY : net/utils.cc.s
 
 tests/test.o: tests/test.cc.o
 .PHONY : tests/test.o
@@ -278,6 +339,30 @@ tests/test_config.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.cc.s
 .PHONY : tests/test_config.cc.s
 
+tests/test_thread.o: tests/test_thread.cc.o
+.PHONY : tests/test_thread.o
+
+# target to build an object file
+tests/test_thread.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/tests/test_thread.cc.o
+.PHONY : tests/test_thread.cc.o
+
+tests/test_thread.i: tests/test_thread.cc.i
+.PHONY : tests/test_thread.i
+
+# target to preprocess a source file
+tests/test_thread.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/tests/test_thread.cc.i
+.PHONY : tests/test_thread.cc.i
+
+tests/test_thread.s: tests/test_thread.cc.s
+.PHONY : tests/test_thread.s
+
+# target to generate assembly for a file
+tests/test_thread.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/tests/test_thread.cc.s
+.PHONY : tests/test_thread.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -289,21 +374,31 @@ help:
 	@echo "... noobnet"
 	@echo "... test"
 	@echo "... test_config"
+	@echo "... test_thread"
 	@echo "... net/config.o"
 	@echo "... net/config.i"
 	@echo "... net/config.s"
 	@echo "... net/log.o"
 	@echo "... net/log.i"
 	@echo "... net/log.s"
+	@echo "... net/mutex.o"
+	@echo "... net/mutex.i"
+	@echo "... net/mutex.s"
 	@echo "... net/thread.o"
 	@echo "... net/thread.i"
 	@echo "... net/thread.s"
+	@echo "... net/utils.o"
+	@echo "... net/utils.i"
+	@echo "... net/utils.s"
 	@echo "... tests/test.o"
 	@echo "... tests/test.i"
 	@echo "... tests/test.s"
 	@echo "... tests/test_config.o"
 	@echo "... tests/test_config.i"
 	@echo "... tests/test_config.s"
+	@echo "... tests/test_thread.o"
+	@echo "... tests/test_thread.i"
+	@echo "... tests/test_thread.s"
 .PHONY : help
 
 

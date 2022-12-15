@@ -11,6 +11,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.25.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.25.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.25.1/CMakeSystem.cmake"
+  "/home/hzycpp/Desktop/MyTemplate/noobnet/cmake/utils.cmake"
   "/snap/cmake/1210/share/cmake-3.25/Modules/CMakeCInformation.cmake"
   "/snap/cmake/1210/share/cmake-3.25/Modules/CMakeCXXInformation.cmake"
   "/snap/cmake/1210/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake"
@@ -46,4 +47,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/noobnet.dir/DependInfo.cmake"
   "CMakeFiles/test.dir/DependInfo.cmake"
   "CMakeFiles/test_config.dir/DependInfo.cmake"
+  "CMakeFiles/test_thread.dir/DependInfo.cmake"
   )

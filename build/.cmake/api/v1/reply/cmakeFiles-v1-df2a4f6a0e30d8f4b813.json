@@ -120,6 +120,9 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/snap/cmake/1210/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"path" : "cmake/utils.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",

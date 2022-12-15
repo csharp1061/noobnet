@@ -6,5 +6,7 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib
 
-CXX_FLAGS =  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g
+CXX_FLAGS =  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations -g
+
+# Custom defines: CMakeFiles/test.dir/tests/test.cc.o_DEFINES = __FILE__="tests/test.cc"
 

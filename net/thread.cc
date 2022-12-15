@@ -2,6 +2,7 @@
 #include "utils.h"
 #include "log.h"
 
+
 namespace noobnet {
 
 static thread_local Thread* t_thread = nullptr;
@@ -33,12 +34,13 @@ Thread::Thread(std::function<void()> cb, const std::string& name)
     if (name.empty()) {
         m_name = "UNKOWN";
     }
-    int ret = pthread_create(&m_thread, nullptr, &Thread::run(), this);
+    int ret = pthread_create(&m_thread, nullptr, &Thread::run, this);
     if (ret) {
         SYS_LOG_ERROR(g_logger) << "Thread create fail--ret= " <<
             ret << "--name= " << name;
         throw std::logic_error("Thread create fail");
     }
+    m_semophore.wait();
 }
 
 Thread::~Thread() {
@@ -52,21 +54,24 @@ void Thread::join() {
         int ret = pthread_join(m_thread, nullptr);
         if (ret) {
             SYS_LOG_ERROR(g_logger) << "Thread join fail--ret= " <<
-                ret << "--name= " << name;
+                ret << "--name= " << m_name;
             throw std::logic_error("Thread join fail");
         }
+        m_thread = 0;
     }
 }
 
 void* Thread::run(void* arg) {
     Thread* thread = (Thread*)arg;
-    t_thread = m_thread;
-    t_thread_name = m_name;
+    t_thread = thread;
+    t_thread_name = thread->m_name;
     thread->m_pid = noobnet::GetThreadId();
     pthread_setname_np(pthread_self(), thread->m_name.substr(0, 15).c_str());
 
-    std::function<void> cb;
-    cb.swap(m_cb);
+    std::function<void()> cb;
+    cb.swap(thread->m_cb);
+
+    thread->m_semophore.notify();
 
     cb();
     return 0;

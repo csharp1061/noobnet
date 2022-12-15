@@ -1,27 +1,42 @@
 [
 {
   "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
-  "command": "/usr/bin/g++ -Dnoobnet_EXPORTS -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -fPIC -o CMakeFiles/noobnet.dir/net/log.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc",
+  "command": "/usr/bin/g++ -Dnoobnet_EXPORTS -D__FILE__=\\\"net/log.cc\\\" -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations -g -fPIC -o CMakeFiles/noobnet.dir/net/log.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc",
   "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc"
 },
 {
   "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
-  "command": "/usr/bin/g++ -Dnoobnet_EXPORTS -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -fPIC -o CMakeFiles/noobnet.dir/net/config.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc",
+  "command": "/usr/bin/g++ -Dnoobnet_EXPORTS -D__FILE__=\\\"net/config.cc\\\" -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations -g -fPIC -o CMakeFiles/noobnet.dir/net/config.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc",
   "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc"
 },
 {
   "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
-  "command": "/usr/bin/g++ -Dnoobnet_EXPORTS -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -fPIC -o CMakeFiles/noobnet.dir/net/thread.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc",
+  "command": "/usr/bin/g++ -Dnoobnet_EXPORTS -D__FILE__=\\\"net/thread.cc\\\" -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations -g -fPIC -o CMakeFiles/noobnet.dir/net/thread.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc",
   "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc"
 },
 {
   "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
-  "command": "/usr/bin/g++  -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -o CMakeFiles/test.dir/tests/test.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc",
+  "command": "/usr/bin/g++ -Dnoobnet_EXPORTS -D__FILE__=\\\"net/utils.cc\\\" -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations -g -fPIC -o CMakeFiles/noobnet.dir/net/utils.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/utils.cc",
+  "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/net/utils.cc"
+},
+{
+  "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
+  "command": "/usr/bin/g++ -Dnoobnet_EXPORTS -D__FILE__=\\\"net/mutex.cc\\\" -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations -g -fPIC -o CMakeFiles/noobnet.dir/net/mutex.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/mutex.cc",
+  "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/net/mutex.cc"
+},
+{
+  "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
+  "command": "/usr/bin/g++  -D__FILE__=\\\"tests/test.cc\\\" -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations -g -o CMakeFiles/test.dir/tests/test.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc",
   "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc"
 },
 {
   "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
-  "command": "/usr/bin/g++  -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -g -o CMakeFiles/test_config.dir/tests/test_config.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test_config.cc",
+  "command": "/usr/bin/g++  -D__FILE__=\\\"tests/test_config.cc\\\" -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations -g -o CMakeFiles/test_config.dir/tests/test_config.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test_config.cc",
   "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/tests/test_config.cc"
+},
+{
+  "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
+  "command": "/usr/bin/g++  -D__FILE__=\\\"tests/test_thread.cc\\\" -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations -g -o CMakeFiles/test_thread.dir/tests/test_thread.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test_thread.cc",
+  "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/tests/test_thread.cc"
 }
 ]

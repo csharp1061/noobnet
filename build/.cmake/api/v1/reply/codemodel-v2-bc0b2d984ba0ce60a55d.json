@@ -17,7 +17,8 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				}
 			],
@@ -34,7 +35,8 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				}
 			],
@@ -43,22 +45,29 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "noobnet::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-noobnet-Debug-0f33e33af61445808400.json",
+					"jsonFile" : "target-noobnet-Debug-fcedad574223105d0ddc.json",
 					"name" : "noobnet",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-test-Debug-502d3c3ba39fe8fd8776.json",
+					"jsonFile" : "target-test-Debug-ac8c186925ab94e5e8f0.json",
 					"name" : "test",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "test_config::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-test_config-Debug-342af38867199b8236e0.json",
+					"jsonFile" : "target-test_config-Debug-0632a01cbd3073c86244.json",
 					"name" : "test_config",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_thread::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_thread-Debug-3cc1ad540f34599550c2.json",
+					"name" : "test_thread",
 					"projectIndex" : 0
 				}
 			]

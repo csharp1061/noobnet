@@ -5,6 +5,7 @@
 #include <pthread.h>
 #include <functional>
 #include <memory>
+#include "mutex.h"
 
 namespace noobnet {
 
@@ -31,8 +32,9 @@ private:
 private:
     pthread_t m_thread = 0;
     pid_t m_pid = -1;
-    std::string m_name;
     std::function<void()> m_cb;
+    std::string m_name;
+    Semophore m_semophore;
 };
 
 } // noobnet

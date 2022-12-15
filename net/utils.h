@@ -4,7 +4,7 @@
 #include <cxxabi.h>
 #include <pthread.h>
 
-namespace {
+namespace noobnet {
 
 template<class T>
 const char* TypeToName() {

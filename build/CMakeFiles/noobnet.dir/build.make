@@ -76,49 +76,79 @@ CMakeFiles/noobnet.dir/net/log.cc.o: CMakeFiles/noobnet.dir/flags.make
 CMakeFiles/noobnet.dir/net/log.cc.o: /home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc
 CMakeFiles/noobnet.dir/net/log.cc.o: CMakeFiles/noobnet.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/noobnet.dir/net/log.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/noobnet.dir/net/log.cc.o -MF CMakeFiles/noobnet.dir/net/log.cc.o.d -o CMakeFiles/noobnet.dir/net/log.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/log.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/noobnet.dir/net/log.cc.o -MF CMakeFiles/noobnet.dir/net/log.cc.o.d -o CMakeFiles/noobnet.dir/net/log.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc
 
 CMakeFiles/noobnet.dir/net/log.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/noobnet.dir/net/log.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc > CMakeFiles/noobnet.dir/net/log.cc.i
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/log.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc > CMakeFiles/noobnet.dir/net/log.cc.i
 
 CMakeFiles/noobnet.dir/net/log.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/noobnet.dir/net/log.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc -o CMakeFiles/noobnet.dir/net/log.cc.s
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/log.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzycpp/Desktop/MyTemplate/noobnet/net/log.cc -o CMakeFiles/noobnet.dir/net/log.cc.s
 
 CMakeFiles/noobnet.dir/net/config.cc.o: CMakeFiles/noobnet.dir/flags.make
 CMakeFiles/noobnet.dir/net/config.cc.o: /home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc
 CMakeFiles/noobnet.dir/net/config.cc.o: CMakeFiles/noobnet.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/noobnet.dir/net/config.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/noobnet.dir/net/config.cc.o -MF CMakeFiles/noobnet.dir/net/config.cc.o.d -o CMakeFiles/noobnet.dir/net/config.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/config.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/noobnet.dir/net/config.cc.o -MF CMakeFiles/noobnet.dir/net/config.cc.o.d -o CMakeFiles/noobnet.dir/net/config.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc
 
 CMakeFiles/noobnet.dir/net/config.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/noobnet.dir/net/config.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc > CMakeFiles/noobnet.dir/net/config.cc.i
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/config.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc > CMakeFiles/noobnet.dir/net/config.cc.i
 
 CMakeFiles/noobnet.dir/net/config.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/noobnet.dir/net/config.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc -o CMakeFiles/noobnet.dir/net/config.cc.s
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/config.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzycpp/Desktop/MyTemplate/noobnet/net/config.cc -o CMakeFiles/noobnet.dir/net/config.cc.s
 
 CMakeFiles/noobnet.dir/net/thread.cc.o: CMakeFiles/noobnet.dir/flags.make
 CMakeFiles/noobnet.dir/net/thread.cc.o: /home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc
 CMakeFiles/noobnet.dir/net/thread.cc.o: CMakeFiles/noobnet.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/noobnet.dir/net/thread.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/noobnet.dir/net/thread.cc.o -MF CMakeFiles/noobnet.dir/net/thread.cc.o.d -o CMakeFiles/noobnet.dir/net/thread.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/thread.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/noobnet.dir/net/thread.cc.o -MF CMakeFiles/noobnet.dir/net/thread.cc.o.d -o CMakeFiles/noobnet.dir/net/thread.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc
 
 CMakeFiles/noobnet.dir/net/thread.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/noobnet.dir/net/thread.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc > CMakeFiles/noobnet.dir/net/thread.cc.i
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/thread.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc > CMakeFiles/noobnet.dir/net/thread.cc.i
 
 CMakeFiles/noobnet.dir/net/thread.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/noobnet.dir/net/thread.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc -o CMakeFiles/noobnet.dir/net/thread.cc.s
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/thread.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzycpp/Desktop/MyTemplate/noobnet/net/thread.cc -o CMakeFiles/noobnet.dir/net/thread.cc.s
+
+CMakeFiles/noobnet.dir/net/utils.cc.o: CMakeFiles/noobnet.dir/flags.make
+CMakeFiles/noobnet.dir/net/utils.cc.o: /home/hzycpp/Desktop/MyTemplate/noobnet/net/utils.cc
+CMakeFiles/noobnet.dir/net/utils.cc.o: CMakeFiles/noobnet.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/noobnet.dir/net/utils.cc.o"
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/utils.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/noobnet.dir/net/utils.cc.o -MF CMakeFiles/noobnet.dir/net/utils.cc.o.d -o CMakeFiles/noobnet.dir/net/utils.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/utils.cc
+
+CMakeFiles/noobnet.dir/net/utils.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/noobnet.dir/net/utils.cc.i"
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/utils.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzycpp/Desktop/MyTemplate/noobnet/net/utils.cc > CMakeFiles/noobnet.dir/net/utils.cc.i
+
+CMakeFiles/noobnet.dir/net/utils.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/noobnet.dir/net/utils.cc.s"
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/utils.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzycpp/Desktop/MyTemplate/noobnet/net/utils.cc -o CMakeFiles/noobnet.dir/net/utils.cc.s
+
+CMakeFiles/noobnet.dir/net/mutex.cc.o: CMakeFiles/noobnet.dir/flags.make
+CMakeFiles/noobnet.dir/net/mutex.cc.o: /home/hzycpp/Desktop/MyTemplate/noobnet/net/mutex.cc
+CMakeFiles/noobnet.dir/net/mutex.cc.o: CMakeFiles/noobnet.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/noobnet.dir/net/mutex.cc.o"
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/mutex.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/noobnet.dir/net/mutex.cc.o -MF CMakeFiles/noobnet.dir/net/mutex.cc.o.d -o CMakeFiles/noobnet.dir/net/mutex.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/net/mutex.cc
+
+CMakeFiles/noobnet.dir/net/mutex.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/noobnet.dir/net/mutex.cc.i"
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/mutex.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzycpp/Desktop/MyTemplate/noobnet/net/mutex.cc > CMakeFiles/noobnet.dir/net/mutex.cc.i
+
+CMakeFiles/noobnet.dir/net/mutex.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/noobnet.dir/net/mutex.cc.s"
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"net/mutex.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzycpp/Desktop/MyTemplate/noobnet/net/mutex.cc -o CMakeFiles/noobnet.dir/net/mutex.cc.s
 
 # Object files for target noobnet
 noobnet_OBJECTS = \
 "CMakeFiles/noobnet.dir/net/log.cc.o" \
 "CMakeFiles/noobnet.dir/net/config.cc.o" \
-"CMakeFiles/noobnet.dir/net/thread.cc.o"
+"CMakeFiles/noobnet.dir/net/thread.cc.o" \
+"CMakeFiles/noobnet.dir/net/utils.cc.o" \
+"CMakeFiles/noobnet.dir/net/mutex.cc.o"
 
 # External object files for target noobnet
 noobnet_EXTERNAL_OBJECTS =
@@ -126,9 +156,11 @@ noobnet_EXTERNAL_OBJECTS =
 /home/hzycpp/Desktop/MyTemplate/noobnet/lib/libnoobnet.so: CMakeFiles/noobnet.dir/net/log.cc.o
 /home/hzycpp/Desktop/MyTemplate/noobnet/lib/libnoobnet.so: CMakeFiles/noobnet.dir/net/config.cc.o
 /home/hzycpp/Desktop/MyTemplate/noobnet/lib/libnoobnet.so: CMakeFiles/noobnet.dir/net/thread.cc.o
+/home/hzycpp/Desktop/MyTemplate/noobnet/lib/libnoobnet.so: CMakeFiles/noobnet.dir/net/utils.cc.o
+/home/hzycpp/Desktop/MyTemplate/noobnet/lib/libnoobnet.so: CMakeFiles/noobnet.dir/net/mutex.cc.o
 /home/hzycpp/Desktop/MyTemplate/noobnet/lib/libnoobnet.so: CMakeFiles/noobnet.dir/build.make
 /home/hzycpp/Desktop/MyTemplate/noobnet/lib/libnoobnet.so: CMakeFiles/noobnet.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library /home/hzycpp/Desktop/MyTemplate/noobnet/lib/libnoobnet.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library /home/hzycpp/Desktop/MyTemplate/noobnet/lib/libnoobnet.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/noobnet.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

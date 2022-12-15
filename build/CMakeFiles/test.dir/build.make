@@ -76,15 +76,15 @@ CMakeFiles/test.dir/tests/test.cc.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/tests/test.cc.o: /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc
 CMakeFiles/test.dir/tests/test.cc.o: CMakeFiles/test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test.dir/tests/test.cc.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/tests/test.cc.o -MF CMakeFiles/test.dir/tests/test.cc.o.d -o CMakeFiles/test.dir/tests/test.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"tests/test.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/tests/test.cc.o -MF CMakeFiles/test.dir/tests/test.cc.o.d -o CMakeFiles/test.dir/tests/test.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc
 
 CMakeFiles/test.dir/tests/test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/tests/test.cc.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc > CMakeFiles/test.dir/tests/test.cc.i
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"tests/test.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc > CMakeFiles/test.dir/tests/test.cc.i
 
 CMakeFiles/test.dir/tests/test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/tests/test.cc.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc -o CMakeFiles/test.dir/tests/test.cc.s
+	/usr/bin/g++ $(CXX_DEFINES) -D__FILE__=\"tests/test.cc\" $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test.cc -o CMakeFiles/test.dir/tests/test.cc.s
 
 # Object files for target test
 test_OBJECTS = \
@@ -96,7 +96,6 @@ test_EXTERNAL_OBJECTS =
 /home/hzycpp/Desktop/MyTemplate/noobnet/bin/test: CMakeFiles/test.dir/tests/test.cc.o
 /home/hzycpp/Desktop/MyTemplate/noobnet/bin/test: CMakeFiles/test.dir/build.make
 /home/hzycpp/Desktop/MyTemplate/noobnet/bin/test: /home/hzycpp/Desktop/MyTemplate/noobnet/lib/libnoobnet.so
-/home/hzycpp/Desktop/MyTemplate/noobnet/bin/test: /usr/local/lib/libyaml-cpp.a
 /home/hzycpp/Desktop/MyTemplate/noobnet/bin/test: CMakeFiles/test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hzycpp/Desktop/MyTemplate/noobnet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/hzycpp/Desktop/MyTemplate/noobnet/bin/test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.dir/link.txt --verbose=$(VERBOSE)
