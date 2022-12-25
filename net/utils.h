@@ -3,6 +3,9 @@
 
 #include <cxxabi.h>
 #include <pthread.h>
+#include <execinfo.h>
+#include <vector>
+#include <string>
 
 namespace noobnet {
 
@@ -14,5 +17,8 @@ const char* TypeToName() {
 
 pid_t GetThreadId();
 
+void Backtrace(std::vector<std::string>& vec, int size = 64, int skip = 1);
+
+std::string BacktraceToString(int size = 64, int skip = 2, const std::string& prefix = "");
 } // noobnet
 #endif // !__NOOBNET_UTILS_

@@ -1,5 +1,5 @@
-#ifndef __CONFIG_
-#define __CONFIG_
+#ifndef __NOOBNET_CONFIG_
+#define __NOOBNET_CONFIG_
 
 #include "log.h"
 #include "utils.h"
@@ -248,26 +248,44 @@ public:
   }
 };
 
-//TODO 增加用户自定义类型的解析与转换
+/**
+ * @brief 配置参数模板类型，并保留其参数值
+ * @details T 具体的参数类型
+ *          FromStr 从string类型转换至模板参数类型的仿函数
+ *          ToStr 从模板参数类型转换至string类型的仿函数
+ *          std::string yaml格式的字符串
+*/
 template<class T, class FromStr = LexicalCast<std::string, T>
                 , class ToStr = LexicalCast<T, std::string>>
 class ConfigVar : public ConfigVarBase {
 public:
-
+  typedef RWMutex RWMutexType;
   typedef std::shared_ptr<ConfigVar> ptr;
   typedef std::function<void (const T& old_conf,const T& new_conf)> on_change_cb; 
 
+  /**
+   * @brief 构造函数
+  */
   ConfigVar(const T& val, const std::string& name, const std::string& des = "")
       :ConfigVarBase(name, des)
       ,m_val(val) {
   }
 
+  /**
+   * @brief 获取配置项类型名称
+  */
   std::string getTypeName() const override { return TypeToName<T>(); }
 
-  //使用boost库的格式转换函数lexical将T类型的值转换为字符串类型
+  /**
+   * @brief     使用字符串转换后的值更改配置项
+   * @details   读取配置项的值，并进行类型转换： 
+   *            自定义配置项类型 -> std::string
+   * @exception e 类型转换失败会抛出异常并打印
+  */
   std::string toString() override {
     try {
       //return boost::lexical_cast<std::string>(m_val); 
+      RWMutexType::ReadLock lock(m_mutex);
       return ToStr()(m_val);
     }
     catch (const std::exception& e) {
@@ -276,7 +294,14 @@ public:
     }    
     return "";
   }
-  //TODO
+
+  /**
+   * @brief     使用字符串转换后的值更改配置项
+   * @param[in] val string类型的配置值
+   * @details   读取string字符串的值，并进行
+   *            类型转换 std::string -> T 更改对应配置项
+   * @exception e 类型转换失败会抛出异常并打印
+  */
   bool fromString(const std::string& val) override {
     try {
       //m_val = LexicalCast<std::string, T>()(val);
@@ -289,54 +314,101 @@ public:
     return false;
   } 
 
-  const T getValue() { return m_val; }
+  /**
+   * @brief 获取参数值
+  */
+  const T getValue() { 
+    RWMutexType::ReadLock lock(m_mutex);
+    return m_val; 
+  }
 
+  /**
+   * @brief 更改对应类型的值
+   * @details 如果对应的值出现变化则通知对应的注册回调函数
+  */
   void setValue(const T& val) { 
-    if(val== m_val) {
-      return;
+    {
+      RWMutexType::ReadLock lock(m_mutex);
+      if(val== m_val) {
+        return;
+      }
+      for(auto& i : m_cbs) {
+        i.second(m_val, val);
+      }
     }
-    for(auto& i : m_cbs) {
-      i.second(m_val, val);
-    }
+    RWMutexType::WriteLock lock(m_mutex);
     m_val = val; 
   } 
   //TODO 返回类型
   
-  //m_cbs
+  /**
+   * @brief     添加回调函数
+   * @param[in] cb 回调函数callback 
+   * @return    将cb添加至回调函数模块之后赋予的序列号
+  */
   uint64_t addListener(on_change_cb cb) {
     static uint64_t s_func_id = 0;
+    RWMutexType::WriteLock lock(m_mutex);
     ++s_func_id;
     m_cbs[s_func_id] = cb;
     return s_func_id;
   }
 
+  /**
+   * @brief     根据序号值获取指定的回调函数
+   * @param[in] key 回调函数的唯一的序列号 
+   * @return    key序号对应的回调函数
+  */
   on_change_cb getListener(uint64_t key) {
+    RWMutexType::ReadLock lock(m_mutex);
     auto it = m_cbs.find(key);
     return it == m_cbs.end() ? nullptr : it->second;
   }
 
+  /**
+   * @brief     根据序号值删除指定的回调函数
+   * @param[in] key 回调函数的唯一的序列号 
+  */
   void delListener(uint64_t key) {
+    RWMutexType::WriteLock lock(m_mutex);
     m_cbs.erase(key);
   }
 
+  /**
+   * @brief 清理所有的回调函数
+  */
   void clearListener() {
+    RWMutexType::WriteLock lock(m_mutex);
     m_cbs.clear();
   }
 private:
   T m_val;
-  //为了保证每个回调函数唯一，使用uint64_t几种进行管理
+  //为了保证每个回调函数唯一，使用uint64_t集中进行管理
   std::map<uint64_t, on_change_cb> m_cbs;
+  RWMutexType m_mutex;
 };
 
 //config var 的管理类
 class Config {
 public:
   typedef std::unordered_map<std::string, ConfigVarBase::ptr> ConfigVarMap;
+  typedef RWMutex RWMutexType;
   
-  //根据三元素查找并返回一个对应的configvar ptr 如果map中没有就会自动创建一个
+  /**
+   * @brief      根据名字查找/创建对应的配置项
+   * @param[in]  default_val 配置项的默认值
+   * @param[in]  name 配置项的名称
+   * @param[in]  des 配置项的描述
+   * @details    根据配置项的名称查找相应的配置项
+   *             若不存在该配置项则使用默认值default_val创建
+   * @return     返回对应的配置参数，若名称存在但格式不匹配则返回nullptr
+   * @exception  若存在[abcdefghijklmnopqrstuvwxyz._012345678]
+   *             抛出异常invalid_argument
+  */
   template<class T>
-  static typename ConfigVar<T>::ptr lookUp(const T& default_val, const std::string& name
+  static typename ConfigVar<T>::ptr LookUp(const T& default_val, const std::string& name
     , const std::string& des="") {
+      RWMutexType::WriteLock lock(GetLock());
       auto it = GetDatas().find(name);
       if (it != GetDatas().end()) {
         auto tmp = std::dynamic_pointer_cast<ConfigVar<T>>(it->second);
@@ -363,9 +435,12 @@ public:
       return v;
   }
 
-  //根据名字在map中找到对应的config
+  /**
+   * @brief 根据名字找到对应的配置项
+  */
   template<class T>
-  static typename ConfigVar<T>::ptr lookUp(const std::string& name) {
+  static typename ConfigVar<T>::ptr LookUp(const std::string& name) {
+    RWMutexType::ReadLock lock(GetLock());
     auto tmp = GetDatas().find(name);
     if (tmp == GetDatas().end()) {
       return nullptr;
@@ -373,16 +448,46 @@ public:
     return std::dynamic_pointer_cast<ConfigVar<T>>(tmp->second);
   }
 
-  static ConfigVarBase::ptr lookUpBase(const std::string& name); 
-    
-  static void loadFromYaml(const YAML::Node& root);
+  /**
+   * @brief     查找配置参数，返回配置参数的基类
+   * @param[in] name 配置参数的名字
+  */
+  static ConfigVarBase::ptr LookUpBase(const std::string& name); 
+
+  /**
+   * @brief 使用YAML::Node初始化配置文件
+  */ 
+  static void LoadFromYaml(const YAML::Node& root);
+
+  /**
+   * @brief     从配置目录path中加载配置项
+   * @param[in] path 配置文件所在的目录 
+  */
+  static void LoadFromConfDir(const std::string& path, bool force);
+  
+  /**
+   * @brief     遍历配置模块内的所有配置项
+   * @param[in] cb 配置项的回调函数
+  */
+  static void Visit(std::function<void(ConfigVarBase::ptr)> cb);
 private:
+  /**
+   * @brief 获得所有的配置项
+  */
   static ConfigVarMap& GetDatas() {
     static ConfigVarMap s_datas;
     return s_datas;
   }
+
+  /**
+   * @brief 配置项的读写锁
+  */
+  static RWMutexType& GetLock() {
+    static RWMutexType s_mutex;
+    return s_mutex;
+  }
 };
 }
 
-#endif // !__CONFIG_
+#endif // !__NOOBNET_CONFIG_
 

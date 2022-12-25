@@ -4,25 +4,25 @@
 
 
 noobnet::ConfigVar<int>::ptr g_int_value_config = 
-  noobnet::Config::lookUp((int)8080, "system.port", "port");
+  noobnet::Config::LookUp((int)8080, "system.port", "port");
 
 noobnet::ConfigVar<std::vector<int>>::ptr g_vec_int_config = 
-  noobnet::Config::lookUp((std::vector<int>){1,2}, "vec", "test vec transform");
+  noobnet::Config::LookUp((std::vector<int>){1,2}, "vec", "test vec transform");
 
 noobnet::ConfigVar<std::list<int>>::ptr g_list_int_config = 
-  noobnet::Config::lookUp((std::list<int>){2,1}, "list", "list vec transform");
+  noobnet::Config::LookUp((std::list<int>){2,1}, "list", "list vec transform");
 
 noobnet::ConfigVar<std::set<int>>::ptr g_set_int_config = 
-  noobnet::Config::lookUp((std::set<int>){2,1,1,1}, "set", "set vec transform");
+  noobnet::Config::LookUp((std::set<int>){2,1,1,1}, "set", "set vec transform");
 
 noobnet::ConfigVar<std::unordered_set<int>>::ptr g_unordered_set_int_config = 
-  noobnet::Config::lookUp((std::unordered_set<int>){2,1,1,1}, "set", "set vec transform");
+  noobnet::Config::LookUp((std::unordered_set<int>){2,1,1,1}, "set", "set vec transform");
   
 noobnet::ConfigVar<std::map<std::string, int>>::ptr g_map_int_config = 
-  noobnet::Config::lookUp((std::map<std::string, int>){{"k", 2}}, "map", "map vec transform");
+  noobnet::Config::LookUp((std::map<std::string, int>){{"k", 2}}, "map", "map vec transform");
 
 noobnet::ConfigVar<std::unordered_map<std::string, int>>::ptr g_unordered_map_int_config = 
-  noobnet::Config::lookUp((std::unordered_map<std::string, int>){{"k", 2}}, "unordered_map", "unordered_map vec transform");
+  noobnet::Config::LookUp((std::unordered_map<std::string, int>){{"k", 2}}, "unordered_map", "unordered_map vec transform");
 
 void test_yaml() {
   YAML::Node root = YAML::LoadFile("/home/hzycpp/Desktop/MyTemplate/noobnet/yaml/logs.yml");
@@ -30,7 +30,7 @@ void test_yaml() {
 }
 
 void test_loadyaml(const YAML::Node& root) { 
-  noobnet::Config::loadFromYaml(root);
+  noobnet::Config::LoadFromYaml(root);
 }
 
 #define XX(g_var, name, prefix) \
@@ -57,7 +57,7 @@ void test_log() {
   YAML::Node root = YAML::LoadFile("/home/hzycpp/Desktop/MyTemplate/noobnet/yaml/logs.yml");
   // std::cout << "=====================================" << std::endl;
   // std::cout << root << std::endl;
-  noobnet::Config::loadFromYaml(root);
+  noobnet::Config::LoadFromYaml(root);
   std::cout << "=====================================" << std::endl;
   std::cout << noobnet::LoggerMgr::getInstance()->toYamlstring() << std::endl;
   std::cout << "=====================================" << std::endl;

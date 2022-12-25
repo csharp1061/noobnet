@@ -18,7 +18,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				}
 			],
@@ -36,7 +37,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				}
 			],
@@ -61,6 +63,13 @@
 					"id" : "test_config::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-test_config-Debug-0632a01cbd3073c86244.json",
 					"name" : "test_config",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_fiber::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_fiber-Debug-b838cda83c394b562644.json",
+					"name" : "test_fiber",
 					"projectIndex" : 0
 				},
 				{

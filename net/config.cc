@@ -5,7 +5,7 @@ namespace noobnet {
 
 // Config::ConfigVarMap Config::s_datas;
 
-ConfigVarBase::ptr Config::lookUpBase(const std::string& name) {
+ConfigVarBase::ptr Config::LookUpBase(const std::string& name) {
   auto it = GetDatas().find(name);
   return it == GetDatas().end() ? nullptr : it->second;
 }
@@ -32,7 +32,7 @@ static void ListAllMember(const std::string& prefix,
   }
 }
 //
-void Config::loadFromYaml(const YAML::Node& root) {
+void Config::LoadFromYaml(const YAML::Node& root) {
   std::list<std::pair<std::string, const YAML::Node>> all_nodes;
   ListAllMember("", root, all_nodes);
 
@@ -43,7 +43,7 @@ void Config::loadFromYaml(const YAML::Node& root) {
     }
 
     std::transform(key.begin(), key.end(), key.begin(), ::tolower);
-    ConfigVarBase::ptr var = Config::lookUpBase(key);
+    ConfigVarBase::ptr var = Config::LookUpBase(key);
 
     if (var) {
       if (it.second.IsScalar()) {

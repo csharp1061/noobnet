@@ -1,9 +1,9 @@
-#ifndef _LOG_
-#define _LOG_
-#define APPDENER_NUM 5
+#ifndef __NOOBNET_LOG_
+#define __NOOBNET_LOG_
 
 #include "singleton.h"
 #include "utils.h"
+#include "mutex.h"
 
 #include <string>
 #include <stdint.h>
@@ -139,8 +139,8 @@ class LogFormatter {
     virtual void format(std::shared_ptr<Logger> logger, std::ostream& os, LogLevel::level level, LogEvent::ptr event) = 0;
   };
 
-  bool is_Error() { return m_error; }
-  std::string getPattern() { return m_pattern; }
+  bool is_Error() const { return m_error; }
+  std::string getPattern() const { return m_pattern; }
 
   void init();
  private:
@@ -158,6 +158,7 @@ class LogAppender {
 
   virtual void log(std::shared_ptr<Logger> logger, LogLevel::level level, LogEvent::ptr event) = 0; 
 
+  //TODO 为set get toyaml方法加锁
   void setFormater(LogFormatter::ptr val);
   LogFormatter::ptr getFormater() const { return m_formatter; }
 
@@ -168,9 +169,11 @@ class LogAppender {
  protected:
   LogLevel::level m_level;
   LogFormatter::ptr m_formatter;
+  Mutex m_mutex;
   bool m_hasformatter = false; //是否有日志格式器
 };
 
+//TODO
 //日志类
 class Logger : public std::enable_shared_from_this<Logger> {
 friend class LoggerManager;
@@ -188,7 +191,7 @@ friend class LoggerManager;
 
   void addAppender(LogAppender::ptr appender);
   void delAppender(LogAppender::ptr appender);
-  void clearAppenders() { m_appenders.clear(); }
+  void clearAppenders();
 
   LogLevel::level getLevel() { return m_level; }
   void setLevel(LogLevel::level val) { m_level = val; }
@@ -196,6 +199,7 @@ friend class LoggerManager;
 
   void setFormatter(const std::string& formatter);
   void setFormatter(const LogFormatter::ptr formatter);
+  LogFormatter::ptr getFormatter();
 
   std::string toYamlString();
  private:
@@ -204,6 +208,8 @@ friend class LoggerManager;
   LogLevel::level m_level;
   std::list<LogAppender::ptr> m_appenders;  //用链表维护appenders
   LogFormatter::ptr m_formatter;  //logger也需要一个formater  可能appender直接输出日志
+  // 互斥锁 线程安全
+  Mutex m_mutex;
 };
 
 //终端日志类
@@ -228,6 +234,7 @@ class FileLogAppender : public LogAppender {
  private:
   std::string m_filename;
   std::ofstream m_filestream;
+  Mutex m_mutex;
 };
 
 //日志管理
@@ -244,6 +251,7 @@ public:
 private:
   std::map<std::string, Logger::ptr> m_loggers;
   Logger::ptr m_root;
+  Mutex m_mutex;
 };
 
 typedef noobnet::SingleTon<LoggerManager> LoggerMgr;

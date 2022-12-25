@@ -5,7 +5,7 @@
 
 noobnet::Logger::ptr g_logger = SYS_LOG_ROOT();
 int count = 0;
-noobnet::RWMutex s_mutex;
+noobnet::Mutex s_mutex;
 
 void func1() {
     SYS_LOG_INFO(g_logger) << "name: " << noobnet::Thread::GetName()
@@ -13,7 +13,7 @@ void func1() {
                            << "id: " << noobnet::GetThreadId()
                            << "this.id: " << noobnet::Thread::GetThis()->getPid();
     for (int i = 0; i < 100000; ++i) {
-        noobnet::RWMutex::WriteLock lock(s_mutex);
+        noobnet::Mutex::Lock lock(s_mutex);
         ++count;
     }
 }

@@ -1,0 +1,1 @@
+/usr/bin/c++  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations CMakeFiles/test_fiber.dir/tests/test_fiber.cc.o -o bin/test_fiber  -Wl,-rpath,/home/hzycpp/Desktop/MyTemplate/noobnet/lib lib/libnoobnet.so -lpthread -lyaml-cpp 

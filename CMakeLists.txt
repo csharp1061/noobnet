@@ -47,5 +47,10 @@ add_dependencies(test_thread noobnet)
 force_redefine_file_macro_for_sources(test_thread) #__FILE__
 target_link_libraries(test_thread noobnet ${LIBS})
 
+add_executable(test_fiber tests/test_fiber.cc)
+add_dependencies(test_fiber noobnet)
+force_redefine_file_macro_for_sources(test_fiber) #__FILE__
+target_link_libraries(test_fiber noobnet ${LIBS})
+
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

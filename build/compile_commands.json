@@ -38,5 +38,10 @@
   "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
   "command": "/usr/bin/g++  -D__FILE__=\\\"tests/test_thread.cc\\\" -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations -g -o CMakeFiles/test_thread.dir/tests/test_thread.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test_thread.cc",
   "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/tests/test_thread.cc"
+},
+{
+  "directory": "/home/hzycpp/Desktop/MyTemplate/noobnet/build",
+  "command": "/usr/bin/g++  -D__FILE__=\\\"tests/test_fiber.cc\\\" -I/home/hzycpp/Desktop/MyTemplate/noobnet/. -I/usr/local/lib  -rdynamic -g -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined -lpthread -Wno-deprecated-declarations -g -o CMakeFiles/test_fiber.dir/tests/test_fiber.cc.o -c /home/hzycpp/Desktop/MyTemplate/noobnet/tests/test_fiber.cc",
+  "file": "/home/hzycpp/Desktop/MyTemplate/noobnet/tests/test_fiber.cc"
 }
 ]
